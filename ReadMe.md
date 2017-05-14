@@ -5,7 +5,7 @@ genetic.js is an easy-to-use genetic algorithm wrapper. Provide the library with
 ```
 npm install genetic.js
 ```
-### Getting Started
+## Getting Started
 
 1. Include it.
 
@@ -19,7 +19,9 @@ npm install genetic.js
 
     `var result = ga.run("FSLC", "ITERATIONS", 100);`
 
-### Reference
+## Reference
+
+### Constructor
 
 `constructor(fitness, initial_population)`
 
@@ -37,6 +39,8 @@ npm install genetic.js
      A starting population for the genetic algorithm represented by a 2D array of integers, with value either 0 or 1. 
     Each individual in the starting population is an array of 0s and 1s. The starting population itself is an array of these individuals.  
   
+
+### Run
 
 `run(encoding, convergence_type, convergence_val, [data_size], [p_crossover], [p_mutate], [p_insert], [p_delete])`
 
@@ -66,11 +70,11 @@ npm install genetic.js
  - **[p_delete]**
      `"VSLC"`only. The percentage of individuals that the deletion operator is applied to.
 
-### Example
+## Example
 
 In the following example, we write a genetic algorithm to attempt to return a string full of 1's.
 
-```
+```javascript
 var fitnessCache = {
     fitness = [],
     average_fitness = 0
@@ -119,6 +123,6 @@ var result = ga.run("VSLC", "ITERATIONS", 200, 1);
 console.log(result);
 ```
 
-### License
+## License
 
 This project is licensed under the MIT License.
