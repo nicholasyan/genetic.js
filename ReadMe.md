@@ -35,7 +35,8 @@ npm install genetic.js
 
  - **initial_population**
      A starting population for the genetic algorithm represented by a 2D array of integers, with value either 0 or 1. 
-    Each individual in the starting population is an array of 0s and 1s. The starting population itself is an array of these individuals.
+    Each individual in the starting population is an array of 0s and 1s. The starting population itself is an array of these individuals.  
+  
 
 `run(encoding, convergence_type, convergence_val, [data_size], [p_crossover], [p_mutate], [p_insert], [p_delete])`
 
@@ -75,10 +76,19 @@ var fitnessCache = {
     average_fitness = 0
 }
 
-// Let's say that our fitness is calculated as the number of 1's in the string divided by the average fitness of the generation
+/* 
+ * Let's say that our fitness is calculated as the number of 
+ * 1's in the string divided by the average fitness of the 
+ * generation
+ */
 function fitness(individual, population, i) {
 
-    // Only recompute the fitnesses when we're starting on a new generation - aka at the first individual in the population; this prevents redundant computation to calculate the average fitness
+    /*
+     * Only recompute the fitnesses when we're starting on a new 
+     * generation - aka at the first individual in the population; 
+     * this prevents redundant computation to calculate the average 
+     * fitness
+     */
     (if i == 0) {
         var fitness_sum = 0;
         population.map(function (val) {
@@ -99,7 +109,11 @@ var initial_population = ["01010", "11000", "00000"]
 
 var ga = new GeneticAlgorithm(fitness, initial_population)
 
-// When using variable-length encoding, we must provide the data_size. Since we want the insertion and deletion operators to either add or remove a single bit, data_size = 1.
+/*
+ * When using variable-length encoding, we must provide the data_size. 
+ * Since we want the insertion and deletion operators to either add 
+ * or remove a single bit, data_size = 1.
+ */
 var result = ga.run("VSLC", "ITERATIONS", 200, 1);
 
 console.log(result);
